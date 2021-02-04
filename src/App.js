@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import ReactDOM, { render } from "react-dom";
+import {Layout, Header, Navigation, Drawer, Content} from 'react-mdl';
+import Main from './Components/main.js';
+import {Link} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="demo-big-content">
+    <Layout>
+    <Header className="header-color" title={<a href='/' style={{textDecoration: 'none', color: 'white'}} to="/">MyPortfolio</a>} scroll>
+            <Navigation>
+                <Link to="/Resume">Resume</Link>
+                <Link to="/Contact">Contact</Link>
+            </Navigation>
+        </Header>
+          <Drawer title={<a style={{textDecoration: 'none', color: 'black'}} to="/">MyPortfolio</a>}>
+            <Navigation>
+                <Link to="/Resume">Resume</Link>
+                <Link to="/Contact">Contact</Link>
+            </Navigation>
+        </Drawer>
+        <Content>
+            <div className="page-content" />
+            <Main/>
+        </Content>
+    </Layout>
+</div>
+    );
+  }
 }
 
 export default App;
